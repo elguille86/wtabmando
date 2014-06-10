@@ -1,0 +1,73 @@
+/*Desarrollado por Guillermo Rodriguez*/
+
+@charset "utf-8";
+ .messagebox , .messageboxok ,.messageboxerror {
+ 	position:absolute;
+ 	width:150px;
+ 	margin-left:30px;
+ 	font-size: 0.7em;
+ 	padding: 5px 15px 5px 15px; 
+ 	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	-o-border-radius: 8px;
+	border-radius: 8px;
+ }
+	.messagebox{
+		border:1px solid #c93;
+		background:#ffc; 
+		margin-top:-10px; 
+		
+	}
+	.messageboxok{
+		border:1px solid #349534;
+		background:#C9FFCA;
+		font-weight:bold;
+		color:#008000;
+	}
+	.messageboxerror{
+		
+		border:1px solid #CC0000;
+		background:#F7CBCA;
+		font-weight:bold;
+		color:#CC0000;
+	}
+
+/*
+.info, .exito, .alerta, .error {
+    font-family:Arial, Helvetica, sans-serif; 
+    font-size:13px;
+    border: 1px solid;
+    margin: 10px 0px;
+    padding:15px 10px 15px 50px;
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    position:relative;
+}
+.info {
+    color: #00529B;
+    background-color: #BDE5F8;
+    background-image: url('../images/info.png');
+}
+.exito {
+    color: #4F8A10;
+    background-color: #DFF2BF;
+    background-image:url('../images/exito.png');
+}
+.alerta {
+    color: #9F6000;
+    background-color: #FEEFB3;
+    background-image: url('../images/alerta.png');
+}
+.error {
+    color: #D8000C;
+    background-color: #FFBABA;
+    background-image: url('../images/error.png');
+}
+*/
+
+@charset "utf-8";.info1, .exito1, .alerta1, .error1{font-family:Verdana,Arial,sans-serif, Arial, Lucida Grande;font-size:13px;border:1px solid;margin:10px 0px;padding:15px 10px 15px 50px;background-repeat:no-repeat;background-position:10px center;position:relative;}
+.info1{color:#00529B;background-color:#BDE5F8;background-image:url('../images/info.png');}
+.exito1{color:#4F8A10;background-color:#DFF2BF;background-image:url('../images/exito.png');}
+.alerta1{color:#9F6000;background-color:#FEEFB3;background-image:url('../images/alerta.png');}
+.error1{color:#D8000C;background-color:#FFBABA;background-image:url('../images/error.png');}
+.error{ color:#D8000C;padding-left: 0.2em; z-index: 100;}

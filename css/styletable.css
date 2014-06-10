@@ -1,0 +1,17 @@
+.AltoScroll{min-height:50px;max-height:550px;overflow:auto;}
+.clsTabla a{color:#0315fe;}
+.clsTabla a:hover{color:#0315fe;}
+.clsTabla table, .clsTabla td{border:1px solid #A4BED4;border-collapse:collapse;font-size:0.85em;font:small/1.3 "Tahoma", "Bitstream Vera Sans", Verdana, Helvetica, sans-serif;}
+.clsTabla table{border:none;border:1px solid #A4BED4;}
+.clsTabla tbody th{background:#fafafb;border-top:1px solid #CCC;text-align:left;font-weight:normal;}
+.clsTabla tbody tr td ,.clsTabla thead tr td{padding:5px 10px; font-size:0.98em;}
+.clsTabla thead tr td{background:#E0E9F5; text-align: center; font-weight: bold; }
+.clsTabla tbody tr:hover td{background:#E0E9F5;}
+.clsTabla tbody tr:hover td{color:#454545;}
+.clsTabla tfoot td,
+.clsTabla tfoot th{border-left:none;border-top:1px solid #CCC;padding:4px;background:#FFF url(foot_bck.gif) repeat;color:#666;}
+.clsTabla caption{text-align:left;padding:10px 0;color:#666;}
+.clsTabla table a:link{color:#666;}
+.clsTabla table a:visited{color:#666;}
+.clsTabla table a:hover{color:#666;text-decoration:none;}
+.clsTabla table a:active{color:#666;}

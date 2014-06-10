@@ -1,0 +1,30 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ $1.php [L]
+# http://http://localhost/wacesoinforma/index == http://localhost/wacesoinforma/index.php
+
+<ifmodule mod_expires.c>
+
+ 	ExpiresActive On
+ 	ExpiresDefault A3600
+ 	<filesmatch ".(jpg|JPG|gif|GIF|png|ico)$"> 
+ 		# 1 weeks
+ 		# ExpiresDefault A604800
+ 		ExpiresDefault A100
+ 		Header append Cache-Control "public"
+ 	</FilesMatch>
+ 	<FilesMatch ".(xml|txt|html|php)$">
+ 		# 2 hours
+ 		# ExpiresDefault A604800
+		ExpiresDefault A3
+ 		Header append Cache-Control "public"
+ 	</FilesMatch>
+ 	<FilesMatch ".(js|css|swf)$">
+ 		# 5 munite
+ 		# ExpiresDefault A1
+		ExpiresDefault A300
+ 		Header append Cache-Control "public"
+ 	</FilesMatch>
+
+</ifmodule>

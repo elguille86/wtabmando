@@ -1,0 +1,214 @@
+/*Desarrollado por Guillermo Rodriguez*/
+body 
+{
+	background:#edf3fc;
+	font-family:  Verdana,Arial,sans-serif; 
+	font-size: 16px;
+	margin:0;
+	padding:0;
+}
+
+a
+{
+	color:#0066FF;
+	text-decoration:none;
+}
+
+a:hover 
+{
+	color:#0066FF;
+}
+ 
+ 
+header
+{
+	font-weight:bold;
+	vertical-align:middle;
+	height:60px;
+	background:white;
+	border:1px solid black;
+	border-top:none;
+	border-right:none;
+	border-left:none;
+	width: 100%;
+	background: #3b5998;
+ 
+}
+header a , header
+{
+	color:white;
+}
+
+header a:hover
+{
+	color:#9badd3;
+}
+
+.ClsSup
+{
+	float: left;  
+	width: auto; 
+	font-size: 0.8em;
+	padding-left: 0.5em ;
+}
+
+.closes
+{
+	display:none;
+}
+.nocloses
+{
+	display:block;
+}
+footer
+{
+	font-size:0.6em;
+	margin-top:0.7em;
+	text-align:center;
+}
+
+#contesyste , #contesyste_from 
+{
+	font-size:0.65em; 
+	border: 4px solid #a5bed4;
+	border-top:none;
+	background: #FFF;
+	padding: 0 0.8em 0 0.8em; 
+	max-height:76%;
+	overflow:auto;
+	margin:0 auto;
+	width: 80%;
+	
+	
+}
+
+.requiref
+{
+	color: red;
+}
+#contesyste 
+{
+	width: 90%;
+	margin: 0 auto;
+	padding-bottom: 0.8em;
+}
+#contesyste_from 
+{
+	width: 55%;
+}
+
+.colum3
+{
+	vertical-align: top;
+	display: inline-block;
+	width: 33.3%;
+}
+.colum2
+{
+	vertical-align: top;
+	display: inline-block;
+	width: 65.5%;
+}
+
+.label  
+{
+
+width: 235px;
+display: inline-block;
+ 
+}
+.menus{
+	padding: 0.8em;
+}
+
+.menus a {
+	text-decoration:underline;
+
+}
+.menus a:hover {
+	text-decoration:none;
+
+}
+
+.formbarra1
+{
+	background:#4d89e3;
+	padding:0.5em 0;
+	font-weight: bold;
+	padding-left: 0.7em;
+}
+
+#formacces p
+{
+	line-height: 0.1em;
+}
+
+.barrabones  input[type=submit], .barrabones  input[type=reset], .barrabones  input[type=button] 
+{
+	margin: 0.3em 0.5em 0.3em 0 ; 
+}
+.titulo  
+{
+	font-size: 1.05em;
+	font-weight: bold;
+	text-align: center;
+	padding: 0.2em;
+}
+.tbsis td 
+{
+	text-align: left;
+	vertical-align: top;
+}
+ 
+input[type=password],input[type=text] , textarea , select{padding:0.35em 0.642em 0.35em 0.642em;border-radius:2px;-moz-border-radius:2px;-webkit-border-radius:2px;-ms-border-radius:2px;-o-border-radius:2px;font-size: 0.95em;}
+textarea 
+{ 
+	font-size: 1.1em;
+}
+ 
+
+input[type=submit], input[type=reset],input[type=button]  
+{
+	background-color: #E0E9F5;
+	border-radius:3px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;	
+	-o-border-radius:3px;	
+	-ms-border-radius:3px;	
+	border: 1px solid transparent;	
+	border-color: #A4BED4;
+	width: 100px;
+	height: auto;
+	cursor:pointer;
+	 font-size: 1.2em; 
+}
+.conresul {
+		width: 80%;
+	margin: 0 auto;
+	text-align:center;
+}
+.divleyenda {
+width: 200px; 
+margin: 0 auto;
+	border-radius:3px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;	
+	-o-border-radius:3px;	
+	-ms-border-radius:3px;
+	text-align: right;
+	border:1px solid #A4BED4;
+	padding: 0.3em 1.2em;
+	margin-bottom: 0.5em;
+}
+
+@media screen and (max-width:789px){
+ 
+	#logod , #logod1 {
+		display: none;
+	}
+ .divleyenda { width: 40%; }
+	body {
+		font-size: 0.85em;
+	}
+	.clsTabla  {font-size: 0.9em;}
+}

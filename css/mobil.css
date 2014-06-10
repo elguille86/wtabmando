@@ -1,0 +1,50 @@
+@media screen and (max-width:1024px){
+	#contesyste_from 
+	{
+		width: 85%;
+	}
+}	
+
+
+@media screen and (max-width:789px){
+ 	body{
+		font-size: 0.9em;
+	} 
+	.colum3 {
+		display: none;
+	}
+	.colum2 {
+		width: 100%;
+	}
+	.label{
+		margin-bottom: 1.2em;
+	}
+	#contesyste_from 
+	{
+		width: 90%;
+	}
+
+#observ ,#solicit{
+		width: 300px;
+	} 
+	
+ textarea{
+ 	font-size: 1.5em;
+ }
+}
+
+@media screen and (max-width:320px){
+
+body{
+font-size: 0.9em;
+
+}
+ #observ ,#solicit{
+		width: 200px;
+
+	} 
+ textarea{
+ 	font-size: 1.5em;
+ }
+ 
+}

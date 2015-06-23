@@ -169,8 +169,11 @@ class LibreriaFuncinos extends  ConfiguracionGlobal
 	public function Divicion1($vmenor, $vmayor) {
 		if($vmenor ==0  && $vmayor==0 ){
 			return  '';
+		}else if( $vmenor !=0  && $vmayor==0 ){
+			return '';
 		}else if($vmenor ==0  || $vmayor==0 ){
 			return '0';
+			//return '';
 		}else{
 			return   round(   ( intval($vmenor)   )  / intval($vmayor ) , 2)  ;
 		}  	
@@ -179,8 +182,11 @@ class LibreriaFuncinos extends  ConfiguracionGlobal
  	public function Porcentaje($vmenor, $vmayor) {
 		if($vmenor ==0  && $vmayor==0 ){
 			return  '';
+		}else if( $vmenor !=0  && $vmayor==0 ){
+			return ''  ;			
 		}else if($vmenor ==0  || $vmayor==0 ){
 			return  '0.0%';
+			//return  '';
 		}else{
 			return  round(   ( intval($vmenor) *100 )  / intval($vmayor ) , 1) .'%';
 		}  	

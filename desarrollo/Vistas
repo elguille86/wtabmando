@@ -1,0 +1,22 @@
+ 
+drop  VIEW `tv_indicadores`
+
+ 
+CREATE VIEW `tv_indicadores` AS  
+ select  concat( 'ind1-',codtab1) as codtab1  , fec_dato , codind , cod_estab , cas_des as valor1 , menor_5a as valor2, fec_reg , fecac , estado , user_name  from  tabindi_1  where  estado  = 1  
+ union all 
+ select  concat( 'ind2-',codtab1) as codtab1 , fec_dato , codind , cod_estab , `cas_ane` as valor1 , `nin_3` as valor2, fec_reg , fecac , estado , user_name  from  tabindi_2  where  estado  = 1  
+ union all 
+ select  concat( 'ind4-',codtab1) as codtab1 , fec_dato , codind , cod_estab , `Nro_ninh` as valor1 , `Nro_nin` as valor2, fec_reg , fecac , estado , user_name  from  tabindi_4  where  estado  = 1  
+ union all
+ select  concat( 'ind5-',codtab1) as codtab1 , fec_dato , codind , cod_estab , `Nro_ninh` as valor1 , `Nro_nin` as valor2, fec_reg , fecac , estado , user_name  from  tabindi_5  where  estado  = 1  
+ union  all 
+ select  concat( 'ind6-',codtab1) as codtab1 , fec_dato , codind , cod_estab , `Nro_muj_pap` as valor1 , `Pob_fem_2013` as valor2, fec_reg , fecac , estado , user_name  from  tabindi_6  where  estado  = 1  
+union all 
+ select  concat( 'ind7-',codtab1) as codtab1 , fec_dato , codind , cod_estab , `Nro_ninh` as valor1 , `Nro_ninh` as valor2, fec_reg , fecac , estado , user_name  from  tabindi_7  where  estado  = 1  
+ union all
+ select  concat( 'ind8-',codtab1) as codtab1 , fec_dato , codind , cod_estab , `Nro_aten` as valor1 , `horasmedico` as valor2, fec_reg , fecac , estado , user_name  from  tabindi_8  where  estado  = 1   
+
+
+
+

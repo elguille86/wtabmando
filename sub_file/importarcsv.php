@@ -1,7 +1,8 @@
 <?php session_start(); 
-//include_once("Controller.class.php");  
+include_once("../class/Controller.class.php");  
  
 if(empty($_SESSION['id_saccisis'])){ session_destroy();
+	$obj_funciones = new cls_funciones ;
 	header("Location: ".$obj_funciones->mi_hosting()."salir.php" );
 }	  
 
@@ -17,22 +18,61 @@ $verifyToken = md5('unique_salt' . $_POST['timestamp']);
 
 if (!empty($_FILES) && $_POST['token'] == $verifyToken) {
  
+ 
 	$indicadores[] = array(
-      'name' => 'indicador4',
+      'name' => 'importar',
       'codigo'=>'cod_estab',
+      'Indicador'=>'Indicador' ,
       'fecha'=>'fecha',
-      'nro_menor'=>'nro_ninos_con_hierro',
-      'nro_mayot'=>'nro_nino_6_11',
-      'sp'=>'f_inserta_Indicador4'
+      'valor1'=>'valor1',
+      'valor2'=>'valor2' ,
+       
 	); 
-	$indicadores[] = array(
-      'name' => 'indicador5',
-      'codigo'=>'cod_estab',
-      'fecha'=>'fecha',
-      'nro_menor'=>'nro_cred',
-      'nro_mayot'=>'nro_neonatos' ,
-      'sp'=>'f_inserta_Indicador5'
-	); 
+
+	$ListaStoreProcedere[] = array(
+
+		);
+    $ListaStoreProcedure = array(
+        array(
+            'NombreSP' => 'f_inserta_Indicador5',
+        'NroIndicador' => '5',
+        ),
+    );
+    $ListaStoreProcedure[] = array(
+        'NombreSP' => 'f_inserta_Indicador4',
+        'NroIndicador' => '4',
+	);
+ 
+
+    $ListaStoreProcedure[] = array(
+        'NombreSP' => 'f_inserta_Indicador1',
+        'NroIndicador' => '1',
+	);
+    $ListaStoreProcedure[] = array(
+        'NombreSP' => 'f_inserta_Indicador2',
+        'NroIndicador' => '2',
+	);
+    $ListaStoreProcedure[] = array(
+        'NombreSP' => 'f_inserta_Indicador6',
+        'NroIndicador' => '6',
+	);
+
+    $ListaStoreProcedure[] = array(
+        'NombreSP' => 'f_inserta_Indicador7',
+        'NroIndicador' => '7',
+	);
+
+    $ListaStoreProcedure[] = array(
+        'NombreSP' => 'f_inserta_Indicador8',
+        'NroIndicador' => '8',
+	);
+
+
+    $ListaStoreProcedure[] = array(
+        'NombreSP' => 'f_inserta_Indicador2_1',
+        'NroIndicador' => '16',
+	);
+
  
 	$file = $_FILES['Filedata']['tmp_name'] ; 
 	$infoarchivo = pathinfo($_FILES['Filedata']['name'] );
@@ -44,13 +84,14 @@ if (!empty($_FILES) && $_POST['token'] == $verifyToken) {
 
 //echo $indicadores[0]['name'];
 	foreach ($indicadores as $key => $value) {
-		if(  $_POST['indicador']==$indicadores[$key]['name']   ){ 
+		if(  $_POST['tip_indicador']==$indicadores[$key]['name']   ){ 
 			$lectura=true;
 			$codigo = $indicadores[$key]['codigo'] ; 
 			$fecha = $indicadores[$key]['fecha'] ; 
-			$nro_menor = $indicadores[$key]['nro_menor'] ; 
-			$nro_mayot = $indicadores[$key]['nro_mayot'] ; 
-			$sp = $indicadores[$key]['sp'] ; 
+			$Indicador = $indicadores[$key]['Indicador'] ; 
+			$valor1 = $indicadores[$key]['valor1'] ; 
+			$valor2 = $indicadores[$key]['valor2'] ; 
+			//$sp = $indicadores[$key]['sp'] ; 
 			break; 
 		}
 
@@ -64,13 +105,13 @@ if (!empty($_FILES) && $_POST['token'] == $verifyToken) {
   		if( $handle ) {
     		while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
     			if($cabe){
-	      			if( ($i==0)  && ($data[0] == $codigo) && ($data[2] == $fecha) && ($data[3] == $nro_menor) && ($data[4] == $nro_mayot)  ){
+	      			if( ($i==0)  && ($data[0] == $codigo) && ($data[2] == $Indicador) && ($data[3] == $fecha) && ($data[4] == $valor1) && ($data[5] == $valor2)  ){
 	      				$cabe = false;
 	      			}else{
 	      				echo "No se estan respetando las Cabeceras indicadas en la platilla de Importacion"; break;
 	      			}
 	    		}else {
-    				if( isset($data[0]) && isset($data[2]) && isset($data[3]) && isset($data[4]) ){
+    				if( isset($data[0]) && isset($data[2]) && isset($data[3]) && isset($data[4]) && isset($data[5]) ){
     					$obj = new cls_RegistroIndicador4();
     					$car_Query = $obj->ExsiteCentroSalud( $data[0]  );
 						$tb1 = mysqli_fetch_array($car_Query);
@@ -82,19 +123,19 @@ if (!empty($_FILES) && $_POST['token'] == $verifyToken) {
 							break;exit();
 						} 
 
-						$resultado = $obj->validateFecha($data[2],'$fecha');
+						$resultado = $obj->validateFecha($data[3],'$fecha');
 						if($resultado != "true"){
 							echo $resultado; echo ' Detalle del Registro ';var_dump($data);unset($datos);
 							break; exit();
 						}
 
-						$resultado = $obj->ValidaNumero($data[3],'Columna $nro_menor ');
+						$resultado = $obj->ValidaNumero($data[4],'Columna $valor1 ');
 						if($resultado != "true"){
 							echo $resultado; echo ' Detalle del Registro ';var_dump($data);unset($datos);
 							break; exit();
 						}
 
-						$resultado = $obj->ValidaNumero($data[4],'Columna $nro_mayot ');
+						$resultado = $obj->ValidaNumero($data[5],'Columna $valor2 ');
 						if($resultado != "true"){
 							echo $resultado; echo ' Detalle del Registro ';var_dump($data);unset($datos);
 							break; exit();
@@ -102,7 +143,7 @@ if (!empty($_FILES) && $_POST['token'] == $verifyToken) {
 
 
 
-						$datos[] = array( $data[0],  $data[2], $data[3], $data[4] , $data[1] ,  ); 
+						$datos[] = array( $data[0], $data[1] ,$data[2] , $data[3], $data[4], $data[5] ,    ); 
  
 
     				}else{
@@ -126,8 +167,18 @@ if (!empty($_FILES) && $_POST['token'] == $verifyToken) {
 	//include '../class/Modelo.RegistroIndicador4.php';
 		$indicador = new cls_RegistroIndicador4();
 		foreach ($datos as $key => $value) {
-			$resp_Query = $indicador->$sp( $_SESSION['id_cod'], 
-			$datos[$key][1] , $datos[$key][0], $datos[$key][2], $datos[$key][3]);
+
+               $sp_del_indicador ="";
+            for($i = 0; $i < count($ListaStoreProcedure); $i++){
+            	if($ListaStoreProcedure[$i]['NroIndicador']==$datos[$key][2]){
+            		$sp_del_indicador = $ListaStoreProcedure[$i]['NombreSP'];
+            		break;
+            	}
+            }
+         
+
+			$resp_Query = $indicador->$sp_del_indicador( $_SESSION['id_cod'], 
+			$datos[$key][3] , $datos[$key][0], $datos[$key][4], $datos[$key][5]);
 			$tabla = mysqli_fetch_array($resp_Query);
 			if(($resp_Query) && ($tabla[0]=='1')  ) {
 				$can++ ; 
@@ -135,6 +186,7 @@ if (!empty($_FILES) && $_POST['token'] == $verifyToken) {
 				$mensaje = $tabla[0];
 				$arraerror[] = array(
 				$datos[$key][0],$datos[$key][1] ,  $datos[$key][2], $datos[$key][3], $datos[$key][4]
+				, $datos[$key][5]
 					);
 				echo 'Nro de Registros ingresados : '.$can.' en la  Base de Datos<br/>';
 				echo $mensaje;

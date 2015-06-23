@@ -22,6 +22,7 @@ if( ($result= $obj_funciones->f_valid_user($user_name )) >= 1){
 	}
 	else if( $row['user_pwd'] = md5($pass) ) {
 		//echo "SysAReg.php?energyblue";
+		 
 		echo "registro.php";
 		 $_SESSION['id_saccisis'] = $user_name;//$row ['nom']; 
 		 $_SESSION['id_cod'] = $row ['user_name'];//$row ['nom']; 

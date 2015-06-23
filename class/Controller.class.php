@@ -32,6 +32,17 @@ Order By cod_red  ,  `cod_mic`,    cod_estab    ";
 		}
 	}
 
+ 
+	function f_lista_Indicadores_activos(){
+		if($this->con->conectarMYSQL()==true){
+		$SQL1 = "select codind, abre from  tb_indicadores where estado='1'  ";
+
+		return mysqli_query($this->con->conect_MySql ,$SQL1);
+		}
+	} 
+
+
+
 	function f_Lista_Centros_Usuarios(){
 		if($this->con->conectarMYSQL()==true){
 		$SQL1 = "select cod_estab, desc_estab  
@@ -95,6 +106,13 @@ Order By cod_red  ,  `cod_mic`,    cod_estab    ";
 	}
  
  
+	function f_Menu_Year(){
+		if($this->con->conectarMYSQL()==true){
+		$SQL1 = "call yearindicadores;";
+		return mysqli_query($this->con->conect_MySql ,$SQL1);
+		}
+	}
+
  
 }
  

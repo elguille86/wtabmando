@@ -10,7 +10,7 @@ ini_set('memory_limit', '256M');
     include_once("Modelo.RegistroIndicador4.php");  
     $obj = new cls_RegistroIndicador4 ;
     $i =1;
-    $result= $obj->f_Lista_Indicador4();
+    $result= $obj->f_Lista_Todos_IndicadorActivos();
     while($filas = mysqli_fetch_array($result)){
         $customers1[] = array(
           'nro' => $i,
@@ -20,7 +20,11 @@ ini_set('memory_limit', '256M');
           'nro1' =>  $filas[2],
           'nro2' =>    $filas[3] ,
           'cod_estab' =>    $filas[5] ,
-          'fec_reg' =>    $filas[6]
+          'fec_reg' =>    $filas[6],
+          'codind' =>    $filas[7],
+          'periodo' =>    $filas[8],
+          
+          
           
         );    
         $i=$i+1;

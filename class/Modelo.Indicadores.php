@@ -52,6 +52,30 @@ class cls_Indicadores extends  LibreriaFuncinos {
 		 } 
  	 }
 
+ 	function Reporte_Indicado_1( $myear ){
+		if($this->con->conectarMYSQL()==true){
+			$SQL1 = "call ReporteIndicado1 ('$myear'); ";
+		 return  mysqli_query($this->con->conect_MySql ,$SQL1);
+		 } 
+ 	 }
+
+ 	function Reporte_Indicado_2( $myear ){
+		if($this->con->conectarMYSQL()==true){
+			$SQL1 = "call ReporteIndicado2 ('$myear'); ";
+		 return  mysqli_query($this->con->conect_MySql ,$SQL1);
+		 } 
+ 	 }
+
+
+
+ 	function Reporte_Indicado_2_1( $myear ){
+		if($this->con->conectarMYSQL()==true){
+			$SQL1 = "call ReporteIndicado2_1 ('$myear'); ";
+		 return  mysqli_query($this->con->conect_MySql ,$SQL1);
+		 } 
+ 	 }
+
+
 }
  
 ?>

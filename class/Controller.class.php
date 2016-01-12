@@ -113,6 +113,22 @@ Order By cod_red  ,  `cod_mic`,    cod_estab    ";
 		}
 	}
 
+
+
+	///-------------- USO DE TABLERO PPR
+
+
+
+	function f_lista_Indicadores_ppr(){
+		if($this->con->conectarMYSQL()==true){
+		$SQL1 = "select Cod_Ind , des_Ind from tb_indicadores2 where Tip_Ind='PPR' and est_Ind='1' ";
+
+		return mysqli_query($this->con->conect_MySql ,$SQL1);
+		
+		}
+	} 
+
+
  
 }
  

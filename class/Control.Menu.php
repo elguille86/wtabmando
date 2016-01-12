@@ -15,6 +15,17 @@
 					}
 					break;
 			 
+				case 'ppr':  
+ 					while($filas = mysqli_fetch_array($tabla)){
+						if($filas[3]=='ppr'){
+							$error = false;
+							$this->viewReporeteppr();break;
+						}
+					}
+					break;
+			 
+
+
 				case 'usu':  
  					while($filas = mysqli_fetch_array($tabla)){
 						if($filas[3]=='usu'){
@@ -90,5 +101,13 @@
 	function Mensaje(){
 		include('view/view_mensaje.php');
 	}
+
+
+
+	function viewReporeteppr()
+	{
+	 	include('view/view_ReporteRRP.php');
+	}
+
 }
 ?> 

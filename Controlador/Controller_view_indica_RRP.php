@@ -53,7 +53,7 @@ $coloverte = "#4d9622"; $colorojo = "#f63939"; $coloamarillo = "#fdd104";
 	  	$verde = " style='background:$coloverte;'  ";
 	  	$rojo = " style='background:$colorojo;'  ";
 	  	$amarillo = " style='background:$coloamarillo;'  ";
-		$blanco = " >";
+		$blanco = "  ";
 		$value = trim($value);
 	  	if($value =="" ){ $respuesta =  $blanco; }
 	  	else if($value >= 100){ $respuesta =  $verde  ; }
@@ -64,12 +64,12 @@ $coloverte = "#4d9622"; $colorojo = "#f63939"; $coloamarillo = "#fdd104";
 	 		echo "
 	 			<table class='clsTabla' cellpadding='0' cellspacing='0'><thead><tr>
 				<td width='150'>CENTRO DE SALUD</td>
-				<td width='50'> Meta del Meses</td>
+				<td width='50'> Meta del Mes</td>
 				<td width='50'> Meta Semana</td>
 				<td width='50'>Semana   </td>
-				<td width='50'>Acence  </td>
-				<td width='50'> ( %  Semana) </td>			
-				<td width='50'> ( %  Mes) </td>
+				<td width='50'>Avance  </td>
+				<td width='50'> ( % ) Semana  </td>			
+				<td width='50'> ( % ) Mes </td>
 				</tr></thead>";
 
 				while($filas = mysqli_fetch_array($result,MYSQL_ASSOC ) ){	

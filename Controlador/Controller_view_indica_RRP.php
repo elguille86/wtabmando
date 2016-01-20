@@ -10,10 +10,11 @@ if($CODIIN =='--'){
 	$text_Indicador = " ";	
 }else{
 	$result= $obj->f_lista_Indicadores_texto_ppr($CODIIN ); 
-
+	$UltimaSemana_Mes1= $obj->f_lista_UltimaSemana_y_Mes(); 
+$UltimaSemana_Mes = mysqli_fetch_array($UltimaSemana_Mes1);
 
 	$filasd = mysqli_fetch_array($result);
-	$text_Indicador = $filasd[0];	
+	$text_Indicador = $filasd[0];	$ArchivoExcel = $filasd[1];	
 }
 $coloverte = "#4d9622"; $colorojo = "#f63939"; $coloamarillo = "#fdd104";
 $operacion ="";
@@ -60,38 +61,44 @@ $coloverte = "#4d9622"; $colorojo = "#f63939"; $coloamarillo = "#fdd104";
 	  	else{ $respuesta =  $rojo ; } 
 		return $respuesta ;
   	}
-		 function TablaIndicadores ($result  ){
-	 		echo "
-	 			<table class='clsTabla' cellpadding='0' cellspacing='0'><thead><tr>
-				<td width='150'>CENTRO DE SALUD</td>
-				<td width='50'> Meta del Mes</td>
-				<td width='50'> Meta Semana</td>
-				<td width='50'>Semana   </td>
-				<td width='50'>Avance  </td>
-				<td width='50'> ( % ) Semana  </td>			
-				<td width='50'> ( % ) Mes </td>
-				</tr></thead>";
+	 function TablaIndicadores ($result ){
+	 	
+ 		echo "
+ 			<table class='clsTabla' cellpadding='0' cellspacing='0'><thead><tr>
+			<td width='150'>CENTRO DE SALUD</td>
+			<td width='50'> Meta del Mes</td>
+			<td width='50'> Meta Semana</td>
+			<td width='50'>Semana   </td>
+			<td width='50'>Avance  </td>
+			<td width='50'> ( % ) Semana  </td>			
+			<td width='50'> ( % ) Mes </td>
+			</tr></thead>";
 
-				while($filas = mysqli_fetch_array($result,MYSQL_ASSOC ) ){	
-					echo "<tr>" ; $CantSemana = $filas['meta_mes']/4 ; $CantAvanceSemana =( $CantSemana *$filas['semana'] ) ;
-					//$stilesstyle=" style='background:#c1bebe' >"; 
-						$stilesstyle=" >"; 
-					echo "<td ".$stilesstyle. $filas['desc_estab']  ."</td>";
-					echo "<td align='center' ".$stilesstyle. $filas['meta_mes']  ."</td>";
-					echo "<td align='center' ".$stilesstyle. $CantAvanceSemana ."</td>";
-					echo "<td align='center' ".$stilesstyle. $filas['semana']  ."</td>";
-					echo "<td align='center' ".$stilesstyle. $filas['Avence']  ."</td>";
-					$PorcentajeAcence = operaciones( $filas['Avence'] , $CantAvanceSemana  ) ;
-					$color = Semaforo_indi_($PorcentajeAcence);
-					echo "<td align='center' ".$color.' '.$stilesstyle. $PorcentajeAcence ."</td>";
-					echo "<td align='center' ".$color.' '.$stilesstyle. operaciones( $filas['Avence'] , $filas['meta_mes']  )  ."</td>";
-		 			echo "</tr>" ;
-				}
-				echo "</table>";
-	 		}
+			while($filas = mysqli_fetch_array($result,MYSQL_ASSOC ) ){	
+				echo "<tr>" ; $CantSemana = $filas['meta_mes']/4 ; $CantAvanceSemana =( $CantSemana *$filas['semana'] ) ;
+				//$stilesstyle=" style='background:#c1bebe' >"; 
+					$stilesstyle=" >"; 
+				echo "<td ".$stilesstyle. $filas['desc_estab']  ."</td>";
+				echo "<td align='center' ".$stilesstyle. $filas['meta_mes']  ."</td>";
+				echo "<td align='center' ".$stilesstyle. $CantAvanceSemana ."</td>";
+				echo "<td align='center' ".$stilesstyle. $filas['semana']  ."</td>";
+				echo "<td align='center' ".$stilesstyle. $filas['Avence']  ."</td>";
+				$PorcentajeAcence = operaciones( $filas['Avence'] , $CantAvanceSemana  ) ;
+				$color = Semaforo_indi_($PorcentajeAcence);
+				echo "<td align='center' ".$color.' '.$stilesstyle. $PorcentajeAcence ."</td>";
+				echo "<td align='center' ".$color.' '.$stilesstyle. operaciones( $filas['Avence'] , $filas['meta_mes']  )  ."</td>";
+	 			echo "</tr>" ;
+			}
+			echo "</table>";
+ 		}
  
 // VARIABLES DE CONFIGURACION
- $nroSemana = 1; $ELYEAR = 2016;
+
+
+ //$nroSemana = 1; $ELYEAR = 2016;
+$nroSemana = $UltimaSemana_Mes[0]; $ELYEAR = $UltimaSemana_Mes[2];
+
+
 echo "
 <div id='jqxTabs'>
 	<ul> 
@@ -103,18 +110,19 @@ echo "
 <div id='jqxTabs-1'> 
 	<div class='conte_tabs'> ";
 	Leyenda(); echo "<br/>";	
-	echo "<p> <h3>Semana  : ".$nroSemana."</h3></p>"; $operacion =  'porcentaje';
+	 $Link = "<b><span class='aliaciontex'> Semana  : ".$nroSemana."</span></b>&nbsp; &nbsp;<a href='excels/$ArchivoExcel'><span class='aliaciontex'>[ Descarga de Lista de Profesionales ] </span> <img  src='imagenes/excel.png' width='30' heigth='30' class='aliaciontex' /></a>";
+	echo "<p>  $Link </p>"; $operacion =  'porcentaje';
 	$result = $obj->Data_Indicador_PPR( 'tvred_bonilla' , $nroSemana ,$ELYEAR,  $CODIIN  );
-	TablaIndicadores ( $result);	
+	TablaIndicadores ( $result );	
 echo"	</div>
 </div>
 
 <div id='jqxTabs-2'> 
 	<div class='conte_tabs'> ";
 	Leyenda(); echo "<br/>";	
-	echo "<p> <h3>Semana  : ".$nroSemana."</h3></p>"; $operacion =  'porcentaje';
+	echo "<p> <b> Semana  : ".$nroSemana."</b> $Link </p>"; $operacion =  'porcentaje';
 	$result = $obj->Data_Indicador_PPR( 'tvred_bepeca' , $nroSemana ,$ELYEAR,  $CODIIN  );
-	TablaIndicadores ( $result);	
+	TablaIndicadores ( $result );
 
 echo"	</div>
 </div>
@@ -122,9 +130,9 @@ echo"	</div>
 <div id='jqxTabs-3'>
     <div class='conte_tabs'>";	
     Leyenda(); echo "<br/>";	
-	echo "<p> <h3>Semana  : ".$nroSemana."</h3></p>"; $operacion =  'porcentaje';
+	echo "<p>  $Link </p>"; $operacion =  'porcentaje';
 	$result = $obj->Data_Indicador_PPR( 'tvred_ventanilla' , $nroSemana ,$ELYEAR,  $CODIIN  );
-	TablaIndicadores ( $result);	
+	TablaIndicadores ( $result );	
 
 	echo "
 	</div>
@@ -141,3 +149,10 @@ echo "<script type='text/javascript'> $(document).ready(function () { $('#jqxTab
 
 ?> 
 </center> 
+<style type="text/css">
+	.aliaciontex {
+		font-size: 12px;
+    vertical-align: middle;
+    margin: 0 0.2em;
+}
+</style>

@@ -14,12 +14,22 @@ class cls_Indicadores_PPR extends  LibreriaFuncinos {
 	 
  	function f_lista_Indicadores_texto_ppr($codigo){
 		if($this->con->conectarMYSQL()==true){
-			$SQL1 = "select  compl  from  tb_indicadores2 where Cod_Ind ='$codigo' ";
+			$SQL1 = "select  compl , excel  from  tb_indicadores2 where Cod_Ind ='$codigo' ";
 
 		return mysqli_query($this->con->conect_MySql ,$SQL1);
 		}
 	} 
  
+
+ 	function f_lista_UltimaSemana_y_Mes(){
+		if($this->con->conectarMYSQL()==true){
+			$SQL1 = "select IFNULL(max(semana),1) as LaSemana ,IFNULL(max(mes),1) as ELMEsa , miano from  tbmeta_indppr ";
+
+		return mysqli_query($this->con->conect_MySql ,$SQL1);
+		}
+	} 
+
+
 
  	function Data_Indicador_PPR( $NombreTb , $semana ,$miyera, $indicador ){
 		if($this->con->conectarMYSQL()==true){
